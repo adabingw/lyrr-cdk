@@ -1,0 +1,7 @@
+requests
+aiohttps
+lyricgenius
+bs4
+numpy
+datasets
+transformers

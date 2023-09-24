@@ -1,10 +1,11 @@
 from data import collect, get_artist
 from model import generator, get_model
+from constants import get_hf_write, get_hf_read
 
 def handler(event, context):
     print(event)
     path = event['path']
-    
+        
     if path == '/artist':
         print("getting artist")
         if event['queryStringParameters'] is None:

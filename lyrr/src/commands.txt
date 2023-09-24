@@ -1,0 +1,11 @@
+docker build --platform linux/amd64 -t docker-image:lyrr .
+
+aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 093876345626.dkr.ecr.us-east-2.amazonaws.com
+
+docker tag docker-image:lyrr 093876345626.dkr.ecr.us-east-2.amazonaws.com/lyrr:latest
+
+docker push 093876345626.dkr.ecr.us-east-2.amazonaws.com/lyrr:latest
+
+aws lambda update-function-code --function-name lyrr_lambda --image-uri 093876345626.dkr.ecr.us-east-2.amazonaws.com/lyrr:latest --publish
+
+aws lambda invoke --function-name lyrr_lambda --cli-binary-format raw-in-base64-out --payload '{""path"": ""/artist"", ""queryStringParameters"": {""artist"": ""lorde""}}' response.json

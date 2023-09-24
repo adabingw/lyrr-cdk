@@ -1,0 +1,1 @@
+{"errorMessage": "error in getting model", "errorType": "AssertionError", "requestId": "a1af7f19-f3a5-43e5-a5a4-30f9a12fd9b1", "stackTrace": ["  File \"/var/task/lambda.py\", line 37, in handler\n    generated_lyrics = generator(text=lyrics, name=artist)\n", "  File \"/var/task/model.py\", line 95, in generator\n    assert model is not None, \"error in getting model\"\n"]}

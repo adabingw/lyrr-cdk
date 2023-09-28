@@ -1,0 +1,4 @@
+https://aws.amazon.com/blogs/compute/hosting-hugging-face-models-on-aws-lambda/
+https://docs.aws.amazon.com/lambda/latest/dg/python-image.html
+https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html#getting_started_install
+

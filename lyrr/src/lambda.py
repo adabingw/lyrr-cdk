@@ -11,7 +11,13 @@ def handler(event, context):
     except: 
         return {
             'statusCode': 200,
-            'body': str(event)
+            'headers': {
+                'Access-Control-Expose-Headers': 'Access-Control-Allow-Origin',
+                'Access-Control-Allow-Credentials': True,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            'body': json.dumps(event)
         }
         
     if path == '/lyrr-backend/artist':
@@ -27,11 +33,13 @@ def handler(event, context):
         
         return {
             'statusCode': 200,
-            # 'headers': {
-            #     "Access-Control-Allow-Origin": "*", # // Required for CORS support to work
-            #     "Access-Control-Allow-Credentials": True #, // Required for cookies, authorization headers with HTTPS
-            # },
-            'body': str(artists)
+            'headers': {
+                'Access-Control-Expose-Headers': 'Access-Control-Allow-Origin',
+                'Access-Control-Allow-Credentials': True,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            'body': json.dumps(artists)
         }
         
     if path == '/lyrr-backend/lyrics':
@@ -50,10 +58,12 @@ def handler(event, context):
         generated_lyrics = generator(text=lyrics, name=artist)
         return {
             'statusCode': 200,
-            # 'headers': {
-            #     "Access-Control-Allow-Origin": "*", # // Required for CORS support to work
-            #     "Access-Control-Allow-Credentials": True #, // Required for cookies, authorization headers with HTTPS
-            # },
+            'headers': {
+                'Access-Control-Expose-Headers': 'Access-Control-Allow-Origin',
+                'Access-Control-Allow-Credentials': True,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
             'body': generated_lyrics
         }
     
@@ -69,10 +79,12 @@ def handler(event, context):
             get_model(artist)
             return {
                 'statusCode': 200,
-                # 'headers': {
-                #     "Access-Control-Allow-Origin": "*", # // Required for CORS support to work
-                #     "Access-Control-Allow-Credentials": True #, // Required for cookies, authorization headers with HTTPS
-                # },
+                'headers': {
+                    'Access-Control-Expose-Headers': 'Access-Control-Allow-Origin',
+                    'Access-Control-Allow-Credentials': True,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
                 'body': event['path']
             }
         except: 

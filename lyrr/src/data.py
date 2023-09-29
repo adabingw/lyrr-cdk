@@ -212,10 +212,10 @@ def get_artist(artist_name = "Lana del Ray"):
         found = False
         
     return {
-        'name': artist_dict["name"],
-        'image': artist_dict["image_url"],
-        'id': artist.id,
-        'exists': found
+        "name": artist_dict["name"],
+        "image": artist_dict["image_url"],
+        "id": artist.id,
+        "exists": found
     }
 
 if __name__ == "__main__":

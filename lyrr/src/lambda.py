@@ -2,9 +2,11 @@ from data import collect, get_artist
 from model import generator, get_model
 from constants import get_hf_write, get_hf_read
 import json
+import huggingface_hub
 
 def handler(event, context):
-    print(event)
+    
+    # huggingface_hub.login(get_hf_write())
     path = ""
     try:
         path = event['path']

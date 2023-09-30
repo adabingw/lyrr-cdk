@@ -203,19 +203,22 @@ def get_artist(artist_name = "Lana del Ray"):
     artist_dict = genius.artist(artist.id)['artist']        
     MODEL_NAME = "lyrr-" + artist_dict["name"].replace(" ", "").lower()
     found = False
+    exc = ""
     
     try: 
         # tries to find see if the model exists TODO: find a better way to do this
-        model = AutoModelForCausalLM.from_pretrained(f"{NAMESPACE}/{MODEL_NAME}", cache_dir=pathlib.Path(MODEL_NAME).resolve())
+        model = AutoModelForCausalLM.from_pretrained(f"{NAMESPACE}/{MODEL_NAME}")
         found = True
-    except:
+    except Exception as e:
+        exc = e
         found = False
         
     return {
         "name": artist_dict["name"],
         "image": artist_dict["image_url"],
         "id": artist.id,
-        "exists": found
+        "exists": found,
+        "exception": str(exc)
     }
 
 if __name__ == "__main__":
